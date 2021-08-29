@@ -8,6 +8,9 @@ MSBT is a text/localization file structure used by Nintendo in first-party games
 - Wii, 3DS, Wii U, and Switch games
 - non-Latin characters
 
+![](https://github.com/theawesomecoder61/MSBT-Merger/blob/main/screen.png?raw=true)
+(files from Super Smash Bros. Ultimate)
+
 ## Usage
 1. Select both `.msbt` files by selecting File and clicking on the respective option
 2. You can review the entries by clicking on an entry in lists under "MSBT 1" and "MSBT 2".
