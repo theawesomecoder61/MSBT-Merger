@@ -13,6 +13,7 @@ MSBT is a text/localization file structure used by Nintendo in first-party games
 
 ## Usage
 1. Select both `.msbt` files by selecting File and clicking on the respective option
+  - Or, drag-and-drop files onto the large, white boxes
 2. You can review the entries by clicking on an entry in lists under "MSBT 1" and "MSBT 2".
   - If you want to merge specific entries, click the checkbox on those. Be sure to check the "Merge Only Selected" option.
   - Otherwise, all matching entries will be merged.
