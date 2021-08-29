@@ -57,9 +57,45 @@ namespace MSBT_Merger
             msbt1RTB.Text = IEntryToString(msbt1, (IEntry)msbt1CLB.SelectedItem);
         }
 
+        private void msbt1CLB_DragEnter(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+            {
+                e.Effect = DragDropEffects.Copy;
+            }
+        }
+
+        private void msbt1CLB_DragDrop(object sender, DragEventArgs e)
+        {
+            string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
+            if (files.Length > 0)
+            {
+                msbt1 = AskAndLoadMSBT(files[0]);
+                PopulateSide(1, msbt1);
+            }
+        }
+
         private void msbt2CLB_SelectedIndexChanged(object sender, EventArgs e)
         {
             msbt2RTB.Text = IEntryToString(msbt2, (IEntry)msbt2CLB.SelectedItem);
+        }
+
+        private void msbt2CLB_DragEnter(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+            {
+                e.Effect = DragDropEffects.Copy;
+            }
+        }
+
+        private void msbt2CLB_DragDrop(object sender, DragEventArgs e)
+        {
+            string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
+            if (files.Length > 0)
+            {
+                msbt2 = AskAndLoadMSBT(files[0]);
+                PopulateSide(2, msbt2);
+            }
         }
 
         private void msbtResultCLB_SelectedIndexChanged(object sender, EventArgs e)
@@ -77,16 +113,16 @@ namespace MSBT_Merger
             Merge(2);
         }
 
-        private MSBT AskAndLoadMSBT()
+        private MSBT AskAndLoadMSBT(string file = null)
         {
             using (OpenFileDialog ofd = new OpenFileDialog
             {
                 Filter = "MSBT Files|*.msbt"
             })
             {
-                if (ofd.ShowDialog() == DialogResult.OK)
+                if (file != null || (file == null && ofd.ShowDialog() == DialogResult.OK))
                 {
-                    return new MSBT(ofd.FileName);
+                    return new MSBT(file ?? ofd.FileName);
                 }
                 else
                 {
@@ -99,6 +135,7 @@ namespace MSBT_Merger
         {
             return msbt.FileEncoding.GetString(msbt.TXT2.OriginalStrings[(int)entry.Index].Value).Replace("\n", "\r\n").TrimEnd('\0').Replace("\0", @"\0") + "\0";
         }
+
         private void Merge(int source)
         {
             if (msbt1 == null || msbt2 == null) return;
@@ -140,7 +177,7 @@ namespace MSBT_Merger
 
                     IEnumerable<string> sel1 = msbt1CLB.SelectedItems.Cast<IEntry>().Select(x => x.ToString());
                     IEnumerable<string> sel2 = msbt2CLB.SelectedItems.Cast<IEntry>().Select(x => x.ToString());
-
+                    
                     Dictionary<string, Label> labels = new Dictionary<string, Label>();
                     foreach (Label lbl in msbtRes.LBL1.Labels)
                     {
@@ -194,11 +231,13 @@ namespace MSBT_Merger
         {
             if (side == 1)
             {
+                msbt1GB.Text = $"MSBT 1: {Path.GetFileNameWithoutExtension(msbt1.File.Name)}";
                 msbt1CLB.Items.Clear();
                 msbt1CLB.Items.AddRange(GetMSBTEntryPairs(msbt1).Keys.ToArray());
             }
             else if (side == 2)
             {
+                msbt2GB.Text = $"MSBT 2: {Path.GetFileNameWithoutExtension(msbt2.File.Name)}";
                 msbt2CLB.Items.Clear();
                 msbt2CLB.Items.AddRange(GetMSBTEntryPairs(msbt2).Keys.ToArray());
             }
@@ -207,6 +246,7 @@ namespace MSBT_Merger
         private Dictionary<IEntry, string> GetMSBTEntryPairs(MSBT msbt)
         {
             Dictionary<IEntry, string> dict = new Dictionary<IEntry, string>();
+            if (msbt == null) return dict;
             
             /*Encoding encoding = Encoding.UTF8;
             if (msbt.Header.EncodingByte == EncodingByte.Unicode)

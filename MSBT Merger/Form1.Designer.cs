@@ -35,32 +35,32 @@
             this.quitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.msbt1GB = new System.Windows.Forms.GroupBox();
             this.msbt1RTB = new System.Windows.Forms.RichTextBox();
             this.msbt1CLB = new System.Windows.Forms.CheckedListBox();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.msbt2GB = new System.Windows.Forms.GroupBox();
             this.msbt2RTB = new System.Windows.Forms.RichTextBox();
             this.msbt2CLB = new System.Windows.Forms.CheckedListBox();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.msbtResGB = new System.Windows.Forms.GroupBox();
+            this.mergeSelectedCB = new System.Windows.Forms.CheckBox();
+            this.createEntriesCB = new System.Windows.Forms.CheckBox();
             this.twoOnOneBtn = new System.Windows.Forms.Button();
             this.oneOnTwoBtn = new System.Windows.Forms.Button();
             this.msbtResultCLB = new System.Windows.Forms.CheckedListBox();
             this.msbtResultRTB = new System.Windows.Forms.RichTextBox();
-            this.createEntriesCB = new System.Windows.Forms.CheckBox();
-            this.mergeSelectedCB = new System.Windows.Forms.CheckBox();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            this.groupBox1.SuspendLayout();
+            this.msbt1GB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
-            this.groupBox2.SuspendLayout();
-            this.groupBox3.SuspendLayout();
+            this.msbt2GB.SuspendLayout();
+            this.msbtResGB.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -88,21 +88,21 @@
             // selectMSBT1ToolStripMenuItem
             // 
             this.selectMSBT1ToolStripMenuItem.Name = "selectMSBT1ToolStripMenuItem";
-            this.selectMSBT1ToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.selectMSBT1ToolStripMenuItem.Size = new System.Drawing.Size(177, 26);
             this.selectMSBT1ToolStripMenuItem.Text = "Select MSBT 1";
             this.selectMSBT1ToolStripMenuItem.Click += new System.EventHandler(this.selectMSBT1ToolStripMenuItem_Click);
             // 
             // selectMSBT2ToolStripMenuItem
             // 
             this.selectMSBT2ToolStripMenuItem.Name = "selectMSBT2ToolStripMenuItem";
-            this.selectMSBT2ToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.selectMSBT2ToolStripMenuItem.Size = new System.Drawing.Size(177, 26);
             this.selectMSBT2ToolStripMenuItem.Text = "Select MSBT 2";
             this.selectMSBT2ToolStripMenuItem.Click += new System.EventHandler(this.selectMSBT2ToolStripMenuItem_Click);
             // 
             // quitToolStripMenuItem
             // 
             this.quitToolStripMenuItem.Name = "quitToolStripMenuItem";
-            this.quitToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.quitToolStripMenuItem.Size = new System.Drawing.Size(177, 26);
             this.quitToolStripMenuItem.Text = "Quit";
             this.quitToolStripMenuItem.Click += new System.EventHandler(this.quitToolStripMenuItem_Click);
             // 
@@ -121,7 +121,7 @@
             // 
             // splitContainer1.Panel1
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.groupBox1);
+            this.splitContainer1.Panel1.Controls.Add(this.msbt1GB);
             // 
             // splitContainer1.Panel2
             // 
@@ -131,17 +131,17 @@
             this.splitContainer1.TabIndex = 0;
             this.splitContainer1.TabStop = false;
             // 
-            // groupBox1
+            // msbt1GB
             // 
-            this.groupBox1.Controls.Add(this.msbt1RTB);
-            this.groupBox1.Controls.Add(this.msbt1CLB);
-            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox1.Location = new System.Drawing.Point(0, 0);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(250, 525);
-            this.groupBox1.TabIndex = 0;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "MSBT 1";
+            this.msbt1GB.Controls.Add(this.msbt1RTB);
+            this.msbt1GB.Controls.Add(this.msbt1CLB);
+            this.msbt1GB.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.msbt1GB.Location = new System.Drawing.Point(0, 0);
+            this.msbt1GB.Name = "msbt1GB";
+            this.msbt1GB.Size = new System.Drawing.Size(250, 525);
+            this.msbt1GB.TabIndex = 0;
+            this.msbt1GB.TabStop = false;
+            this.msbt1GB.Text = "MSBT 1";
             // 
             // msbt1RTB
             // 
@@ -160,6 +160,7 @@
             // 
             // msbt1CLB
             // 
+            this.msbt1CLB.AllowDrop = true;
             this.msbt1CLB.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -171,6 +172,8 @@
             this.msbt1CLB.TabIndex = 0;
             this.msbt1CLB.TabStop = false;
             this.msbt1CLB.SelectedIndexChanged += new System.EventHandler(this.msbt1CLB_SelectedIndexChanged);
+            this.msbt1CLB.DragDrop += new System.Windows.Forms.DragEventHandler(this.msbt1CLB_DragDrop);
+            this.msbt1CLB.DragEnter += new System.Windows.Forms.DragEventHandler(this.msbt1CLB_DragEnter);
             // 
             // splitContainer2
             // 
@@ -180,27 +183,27 @@
             // 
             // splitContainer2.Panel1
             // 
-            this.splitContainer2.Panel1.Controls.Add(this.groupBox2);
+            this.splitContainer2.Panel1.Controls.Add(this.msbt2GB);
             // 
             // splitContainer2.Panel2
             // 
-            this.splitContainer2.Panel2.Controls.Add(this.groupBox3);
+            this.splitContainer2.Panel2.Controls.Add(this.msbtResGB);
             this.splitContainer2.Size = new System.Drawing.Size(692, 525);
             this.splitContainer2.SplitterDistance = 266;
             this.splitContainer2.TabIndex = 0;
             this.splitContainer2.TabStop = false;
             // 
-            // groupBox2
+            // msbt2GB
             // 
-            this.groupBox2.Controls.Add(this.msbt2RTB);
-            this.groupBox2.Controls.Add(this.msbt2CLB);
-            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox2.Location = new System.Drawing.Point(0, 0);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(266, 525);
-            this.groupBox2.TabIndex = 0;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "MSBT 2";
+            this.msbt2GB.Controls.Add(this.msbt2RTB);
+            this.msbt2GB.Controls.Add(this.msbt2CLB);
+            this.msbt2GB.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.msbt2GB.Location = new System.Drawing.Point(0, 0);
+            this.msbt2GB.Name = "msbt2GB";
+            this.msbt2GB.Size = new System.Drawing.Size(266, 525);
+            this.msbt2GB.TabIndex = 0;
+            this.msbt2GB.TabStop = false;
+            this.msbt2GB.Text = "MSBT 2";
             // 
             // msbt2RTB
             // 
@@ -219,6 +222,7 @@
             // 
             // msbt2CLB
             // 
+            this.msbt2CLB.AllowDrop = true;
             this.msbt2CLB.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -230,22 +234,44 @@
             this.msbt2CLB.TabIndex = 0;
             this.msbt2CLB.TabStop = false;
             this.msbt2CLB.SelectedIndexChanged += new System.EventHandler(this.msbt2CLB_SelectedIndexChanged);
+            this.msbt2CLB.DragDrop += new System.Windows.Forms.DragEventHandler(this.msbt2CLB_DragDrop);
+            this.msbt2CLB.DragEnter += new System.Windows.Forms.DragEventHandler(this.msbt2CLB_DragEnter);
             // 
-            // groupBox3
+            // msbtResGB
             // 
-            this.groupBox3.Controls.Add(this.mergeSelectedCB);
-            this.groupBox3.Controls.Add(this.createEntriesCB);
-            this.groupBox3.Controls.Add(this.twoOnOneBtn);
-            this.groupBox3.Controls.Add(this.oneOnTwoBtn);
-            this.groupBox3.Controls.Add(this.msbtResultCLB);
-            this.groupBox3.Controls.Add(this.msbtResultRTB);
-            this.groupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox3.Location = new System.Drawing.Point(0, 0);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(422, 525);
-            this.groupBox3.TabIndex = 0;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Result MSBT";
+            this.msbtResGB.Controls.Add(this.mergeSelectedCB);
+            this.msbtResGB.Controls.Add(this.createEntriesCB);
+            this.msbtResGB.Controls.Add(this.twoOnOneBtn);
+            this.msbtResGB.Controls.Add(this.oneOnTwoBtn);
+            this.msbtResGB.Controls.Add(this.msbtResultCLB);
+            this.msbtResGB.Controls.Add(this.msbtResultRTB);
+            this.msbtResGB.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.msbtResGB.Location = new System.Drawing.Point(0, 0);
+            this.msbtResGB.Name = "msbtResGB";
+            this.msbtResGB.Size = new System.Drawing.Size(422, 525);
+            this.msbtResGB.TabIndex = 0;
+            this.msbtResGB.TabStop = false;
+            this.msbtResGB.Text = "Result MSBT";
+            // 
+            // mergeSelectedCB
+            // 
+            this.mergeSelectedCB.AutoSize = true;
+            this.mergeSelectedCB.Location = new System.Drawing.Point(7, 146);
+            this.mergeSelectedCB.Name = "mergeSelectedCB";
+            this.mergeSelectedCB.Size = new System.Drawing.Size(162, 21);
+            this.mergeSelectedCB.TabIndex = 0;
+            this.mergeSelectedCB.Text = "Merge Only Selected";
+            this.mergeSelectedCB.UseVisualStyleBackColor = true;
+            // 
+            // createEntriesCB
+            // 
+            this.createEntriesCB.AutoSize = true;
+            this.createEntriesCB.Location = new System.Drawing.Point(7, 173);
+            this.createEntriesCB.Name = "createEntriesCB";
+            this.createEntriesCB.Size = new System.Drawing.Size(171, 21);
+            this.createEntriesCB.TabIndex = 0;
+            this.createEntriesCB.Text = "Create Missing Entries";
+            this.createEntriesCB.UseVisualStyleBackColor = true;
             // 
             // twoOnOneBtn
             // 
@@ -296,26 +322,6 @@
             this.msbtResultRTB.TabStop = false;
             this.msbtResultRTB.Text = "";
             // 
-            // createEntriesCB
-            // 
-            this.createEntriesCB.AutoSize = true;
-            this.createEntriesCB.Location = new System.Drawing.Point(7, 173);
-            this.createEntriesCB.Name = "createEntriesCB";
-            this.createEntriesCB.Size = new System.Drawing.Size(171, 21);
-            this.createEntriesCB.TabIndex = 0;
-            this.createEntriesCB.Text = "Create Missing Entries";
-            this.createEntriesCB.UseVisualStyleBackColor = true;
-            // 
-            // mergeSelectedCB
-            // 
-            this.mergeSelectedCB.AutoSize = true;
-            this.mergeSelectedCB.Location = new System.Drawing.Point(7, 146);
-            this.mergeSelectedCB.Name = "mergeSelectedCB";
-            this.mergeSelectedCB.Size = new System.Drawing.Size(162, 21);
-            this.mergeSelectedCB.TabIndex = 0;
-            this.mergeSelectedCB.Text = "Merge Only Selected";
-            this.mergeSelectedCB.UseVisualStyleBackColor = true;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -333,14 +339,14 @@
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
-            this.groupBox1.ResumeLayout(false);
+            this.msbt1GB.ResumeLayout(false);
             this.splitContainer2.Panel1.ResumeLayout(false);
             this.splitContainer2.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
+            this.msbt2GB.ResumeLayout(false);
+            this.msbtResGB.ResumeLayout(false);
+            this.msbtResGB.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -356,9 +362,9 @@
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.SplitContainer splitContainer2;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.GroupBox msbt1GB;
+        private System.Windows.Forms.GroupBox msbt2GB;
+        private System.Windows.Forms.GroupBox msbtResGB;
         private System.Windows.Forms.CheckedListBox msbt1CLB;
         private System.Windows.Forms.RichTextBox msbt1RTB;
         private System.Windows.Forms.RichTextBox msbt2RTB;
