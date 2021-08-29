@@ -49,7 +49,7 @@ namespace MSBT_Merger
 
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("A simple program to merge MSBT entries. Program by pineapples721. MSBT logic by IcySon55.", "MSBT Merger");
+            MessageBox.Show("A simple program to merge MSBT entries. Program by theawesomecoder61. MSBT logic by IcySon55.", "MSBT Merger");
         }
 
         private void msbt1CLB_SelectedIndexChanged(object sender, EventArgs e)

@@ -8,7 +8,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("MSBT Merger")]
 [assembly: AssemblyDescription("A program to merge MSBT entries")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("pineapples721")]
+[assembly: AssemblyCompany("theawesomecoder61")]
 [assembly: AssemblyProduct("MSBT Merger")]
 [assembly: AssemblyCopyright("")]
 [assembly: AssemblyTrademark("")]
